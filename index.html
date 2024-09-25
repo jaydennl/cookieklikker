@@ -1,56 +1,142 @@
 <html>
     <head>
-        <script type="text/javascript" src="js/cookie.js"></script>
         <title>Cookie Clicker</title>
-        <link rel = "stylesheet" href = "clicker.css"/>
+        <link rel="stylesheet" href="clicker.css" />
         <script type="text/javascript" src="clicker.js"></script>
+
+        <style>
+            /* Main Body Styles */
+            body {
+                font-family: Arial;
+                background-color: rgb(240, 174, 83);
+                width: 900px;
+                margin: auto;
+                padding-top: 100px; /* Moved content lower */
+                text-align: center;
+            }
+
+            p {
+                font-size: 20px;
+                color: black;
+                margin: 5px;
+            }
+
+            /* Flexbox for positioning */
+            .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start; /* Aligns content at the top */
+            }
+
+            /* Modes Section (Left Side with Table) */
+            #modes {
+                width: 40%;
+                margin-right: 20px;
+                text-align: left;
+                margin-top: 50px; /* Adjust this to align with the cookie */
+            }
+
+            table {
+                width: 120%; /* Increase the width of the table */
+                border: 2px solid;
+                border-radius: 5px;
+                margin-bottom: 50px;
+            }
+
+            td {
+                padding: 8px; /* Increase padding inside the table cells */
+                font-size: 22px; /* Increase the font size */
+            }
+
+            /* Pink bar section */
+            #upgradeLevel {
+                width: 100%; /* Width of 100% inside modes */
+                font-size: 30px;
+                border: 5px solid;
+                border-radius: 10px;
+                background-color: rgb(255, 202, 9);
+                padding: 10px;
+                height: 35px; /* Matches your original pink bar height */
+                text-align: center;
+            }
+
+            /* Bakery Section (Right Side with Cookie) */
+            #bakery-section {
+                width: 40%;
+                text-align: center;
+            }
+
+            #cookie img {
+                width: 250px; /* Enlarge the cookie */
+                height: 250px;
+                margin-bottom: 50px; /* Space between cookie and counter */
+            }
+
+            #space {
+                font-size: 30px;
+                border: 5px solid;
+                border-radius: 10px;
+                background-color: rgb(255, 202, 9);
+                color: rgb(0, 0, 0);
+                padding: 10px;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            /* Cookie Counter */
+            #numbers {
+                font-size: 40px;
+                border: 5px solid;
+                border-radius: 10px;
+                background-color: white;
+                width: 150px;
+                height: 50px;
+                line-height: 60px;
+                margin: auto;
+            }
+        </style>
     </head>
 
     <body>
-        <div id = "space"></div>
-        <div id = "cookie" onclick="cookieClick()">
-            <img src="https://media.giphy.com/media/l0u0eiVkW4x0Y/200.gif" width="200px"/>
+        <!-- Container for Layout -->
+        <div class="container">
+            <!-- Left side: Table and Pink Bar -->
+            <div id="modes">
+                <table>
+                    <tr>
+                        <td>Granny mode</td>
+                        <td>30 Cookies</td>
+                    </tr>
+                    <tr>
+                        <td>Factory mode</td>
+                        <td>100 Cookies</td>
+                    </tr>
+                    <tr>
+                        <td>Plant mode</td>
+                        <td>200 Cookies</td>
+                    </tr>
+                    <tr>
+                        <td>SuperPlant mode</td>
+                        <td>500 Cookies</td>
+                    </tr>
+                </table>
+                <!-- Pink bar for Upgrade Level -->
+                <div id="upgradeLevel">Modes</div>
+            </div>
+
+            <!-- Right side: Bakery and Cookie -->
+            <div id="bakery-section">
+                <!-- Bakery name -->
+                <div id="space">Your Bakery</div>
+
+                <!-- Cookie image -->
+                <div id="cookie">
+                    <img src="https://media.giphy.com/media/l0u0eiVkW4x0Y/200.gif" alt="Cookie" onclick="cookieClick()" />
+                </div>
+
+                <!-- Cookie count -->
+                <div id="numbers">0</div>
+            </div>
         </div>
-        
-        <p>Number of Cookies:</p>
-        
-        <div id = "numbers"></div>
-        <div id= "upgradeLevel"></div>
-
-        <p>Intructions: Click the cookie - this makes more cookies.</p>
-        <p>You will AUTOMATICALLY upgrade according the following table of upgrade costs! :</p>
-
-        <table>
-            <tr>
-                <td>Name</td>
-                <td>How many cookies can it make?</td>
-                <td>cost</td>
-            </tr>
-            
-            <tr>
-                <td>Granny!</td>
-                <td>Granny make 2x's as much!</td>
-                <td>30 cookies!</td>
-            </tr>
-            
-            <tr>
-                <td>Factory</td>
-                <td> Factory makes 10x's as much!</td>
-                <td>500 cookies!</td>
-            </tr>
-            
-            <tr>
-                <td>Plant</td>
-                <td> Plant makes 30x's as much!</td>
-                <td>1,000 cookies!</td>
-            </tr>
-            
-             <tr>
-                <td>SuperPlant</td>
-                <td> SuperFactory makes 1000x's as much!</td>
-                <td>100,000 cookies!</td>
-            </tr>
-
-        </table>
     </body>
 </html>
