@@ -1,65 +1,90 @@
+
+/* Main Body Styles */
 body {
-    padding-top: 30px;
     font-family: Arial;
-    background-color: turquoise;
-    width: 500px;
+    background-color: rgb(240, 174, 83);
+    width: 900px;
     margin: auto;
+    padding-top: 100px; /* Moved content lower */
     text-align: center;
-}                                           
+}
 
 p {
     font-size: 20px;
-    color: white;
-    display: block;
+    color: black;
     margin: 5px;
 }
 
-#space {
-    margin: auto;
-    text-align:center;
-    padding-top: 20px;
-    margin-bottom: 5px;
-    font-size: 30px;
-    border:5px solid;
-    border-radius:10px;
-    background-color: greenyellow;
-    color: white;
-    width:389px;
-    height:60px;
+/* Flexbox for positioning */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligns content at the top */
+}
+
+/* Modes Section (Left Side with Table) */
+#modes {
+    width: 40%;
+    margin-right: 20px;
+    text-align: left;
+    margin-top: 50px; /* Adjust this to align with the cookie */
 }
 
 table {
-    margin-top: 10px;
+    width: 120%; /* Increase the width of the table */
     border: 2px solid;
     border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 td {
-    border:1px solid;
+    padding: 8px; /* Increase padding inside the table cells */
+    font-size: 22px; /* Increase the font size */
 }
 
-#numbers {
-    margin: auto;
-    text-align:center;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    font-size: 30px;
-    border:5px solid;
-    border-radius:10px;
-    background-color:white;
-    width:200px;
-    height:60px;    
-}
-
+/* Pink bar section */
 #upgradeLevel {
-    margin: auto;
-    text-align:center;
-    padding-top: 20px;
-    margin-bottom: 20px;
+    width: 100%; /* Width of 100% inside modes */
     font-size: 30px;
-    border:5px solid;
-    border-radius:10px;
-    background-color:lightpink;
-    width:300px;
-    height:50px;    
+    border: 5px solid;
+    border-radius: 10px;
+    background-color: rgb(255, 202, 9);
+    padding: 10px;
+    height: 35px; /* Matches your original pink bar height */
+    text-align: center;
+}
+
+/* Bakery Section (Right Side with Cookie) */
+#bakery-section {
+    width: 40%;
+    text-align: center;
+}
+
+#cookie img {
+    width: 250px; /* Enlarge the cookie */
+    height: 250px;
+    margin-bottom: 50px; /* Space between cookie and counter */
+}
+
+#space {
+    font-size: 30px;
+    border: 5px solid;
+    border-radius: 10px;
+    background-color: rgb(255, 202, 9);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Cookie Counter */
+#numbers {
+    font-size: 40px;
+    border: 5px solid;
+    border-radius: 10px;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    line-height: 60px;
+    margin: auto;
 }
