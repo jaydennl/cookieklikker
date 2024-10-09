@@ -22,7 +22,7 @@ p {
     align-items: flex-start; /* Aligns content at the top */
 }
 
-/* Modes Section (Left Side with Table) */
+/* Modes Sectie (Left Side with Table) */
 #modes {
     width: 40%;
     margin-right: 20px;
@@ -42,7 +42,7 @@ td {
     font-size: 22px; /* Increase the font size */
 }
 
-/* Pink bar section */
+/* bar section */
 #upgradeLevel {
     width: 100%; /* Width of 100% inside modes */
     font-size: 30px;
@@ -54,7 +54,7 @@ td {
     text-align: center;
 }
 
-/* Bakery Section (Right Side with Cookie) */
+/* Bakkerij Sectie (Right Side with Cookie) */
 #bakery-section {
     width: 40%;
     text-align: center;
@@ -63,7 +63,7 @@ td {
 #cookie img {
     width: 250px; /* Enlarge the cookie */
     height: 250px;
-    margin-bottom: 50px; /* Space between cookie and counter */
+    margin-bottom: 50px; /* ruimte tussen cookie en counter */
 }
 
 #space {
