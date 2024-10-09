@@ -1,7 +1,7 @@
-// Initial number of cookies
+// Initial nummer van cookies
 var num = 0;
 
-// Prompt for bakery name and set it
+// Prompt for bakkerij naam and set it
 window.onload = function () {
     var name = prompt("What is your name?");
     var space = document.getElementById("space");
@@ -17,7 +17,7 @@ function cookieClick() {
 
     numbers.innerHTML = num;
 
-    // Automatic upgrades
+    // Automatische upgrades
     if (num >= 30 && num < 500) {
         num += 2;
         upgradeLevel.innerHTML = "Granny Level";
@@ -33,6 +33,6 @@ function cookieClick() {
     }
 }
 cookieButton.addEventListener('click', function() {
-  score++;  // Increment score by 1
-  scoreDisplay.textContent = score;  // Update the score on the screen
+  score++;  // verhoog score met 1
+  scoreDisplay.textContent = score;  // Update de score op het scherm
 });
