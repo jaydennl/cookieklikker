@@ -18,7 +18,7 @@ var grannyBonus = 3;    // Granny Upgrade voegt +3 cookies per click
 var factoryBonus = 10;  // Factory Upgrade voegt +10 cookies per click
 var farmBonus = 30;     // Farm Upgrade voegt +30 cookies per click
 var robotBonus = 100;   // Robot Upgrade voegt +100 cookies per click
-var cosmischeBonus = 200;   // cosmische Upgrade voegt +200 cookies per click
+var cosmischeBonus = 200;   // cosmische Upgrade voegt +200 ckookies per click
 
 var clickBonus = 0;  // Totale bonus van alle upgrades
 
