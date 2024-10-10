@@ -14,38 +14,42 @@
             <div id="modes">
                 <table>
                     <tr>
-                        <td>Granny koekjes:+10</td>
                         <td>30 Cookies</td>
+                        <td>
+                            <button id="grannyUpgrade" onclick="activateGrannyUpgrade()">Granny Upgrade</button>
+                            <span id="grannyCount">0</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Fabriek koekjes:+30</td>
+                        <td>100 Cookies</td>
+                        <td>
+                            <button id="factoryUpgrade" onclick="activateFactoryUpgrade()">Factory Upgrade</button>
+                            <span id="factoryCount">0</span>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>200 Cookies</td>
+                        <td>
+                            <button id="farmUpgrade" onclick="activateFarmUpgrade()">Farm Upgrade</button>
+                            <span id="farmCount">0</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td>boerderij koekjes:+125</td>
-                        <td>1150 Cookies</td>
-                    </tr>
-                    <tr>
-                        <td>robot koekjes:+1250</td>
                         <td>500 Cookies</td>
+                        <td>
+                            <button id="robotUpgrade" onclick="activateRobotUpgrade()">Robot Upgrade</button>
+                            <span id="robotCount">0</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td>alien koekjes</td>
-                        <td>10,000 Cookies</td>
-                    </tr>
-                    <tr>
-                        <td>intergalactic koekjes</td>
-                        <td>25,000 Cookies</td>
-                    </tr>
-                    <tr>
-                        <td>dimensional koekjes</td>
-                        <td>50,000 Cookies</td>
-                    </tr>
-                    <tr>
-                        <td>cosmic koekjes</td>
-                        <td>100,000 Cookies</td>
+                        <td>1000 Cookies</td>
+                        <td>
+                            <button id="cosmischeUpgrade" onclick="activateCosmischeUpgrade()">cosmische Upgrade</button>
+                            <span id="cosmischeCount">0</span>
+                        </td>
                     </tr>
                 </table>
+                
                 <!-- bar voor Upgrade Level -->
                 <div id="upgradeLevel">Modes</div>
             </div>
