@@ -1,156 +1,113 @@
-var num = 0;
+// BakeryGame class to manage the game state
+class BakeryGame {
+    constructor() {
+        this.num = 0;  // Total number of cookies
+        this.clickBonus = 0;  // Total bonus from upgrades
+        this.upgrades = {};  // Store for all upgrade instances
+    }
 
-// Upgrade counts en kosten
-var grannyCount = 0;
-var factoryCount = 0;
-var farmCount = 0;
-var robotCount = 0;
-var cosmischeCount = 0;
+    // Method to handle cookie clicks
+    cookieClick() {
+        this.num += 1 + this.clickBonus;  // Add base 1 cookie + bonuses
+        this.updateUI();
+        this.enableUpgradeButtons();
+    }
 
-var grannyCost = 30;
-var factoryCost = 100;
-var farmCost = 200;
-var robotCost = 500;
-var cosmischeCost = 1000;
+    // Method to update the UI with the current cookie count
+    updateUI() {
+        document.getElementById("numbers").innerHTML = this.num;
+    }
 
-// Cookie bonuses per upgrade
-var grannyBonus = 3;    // Granny Upgrade voegt +3 cookies per click
-var factoryBonus = 10;  // Factory Upgrade voegt +10 cookies per click
-var farmBonus = 30;     // Farm Upgrade voegt +30 cookies per click
-var robotBonus = 100;   // Robot Upgrade voegt +100 cookies per click
-var cosmischeBonus = 200;   // cosmische Upgrade voegt +200 ckookies per click
+    // Enable upgrade buttons based on current cookie count
+    enableUpgradeButtons() {
+        for (let key in this.upgrades) {
+            const upgrade = this.upgrades[key];
+            const button = document.getElementById(upgrade.buttonId);
+            button.disabled = this.num < upgrade.cost;
+        }
+    }
 
-var clickBonus = 0;  // Totale bonus van alle upgrades
+    // Add upgrade to the game
+    addUpgrade(upgrade) {
+        this.upgrades[upgrade.name] = upgrade;
+    }
+}
 
+// Upgrade class to manage each upgrade's properties and methods
+class Upgrade {
+    constructor(name, cost, bonus, costIncreaseFactor, buttonId, displayCountId) {
+        this.name = name;  // Upgrade name
+        this.count = 0;  // Number of times upgrade purchased
+        this.cost = cost;  // Initial cost of the upgrade
+        this.bonus = bonus;  // Cookies per click bonus for this upgrade
+        this.costIncreaseFactor = costIncreaseFactor;  // Cost multiplier for each purchase
+        this.buttonId = buttonId;  // The ID of the button in the HTML
+        this.displayCountId = displayCountId;  // The ID to display the count in the UI
+    }
+
+    // Method to activate the upgrade and increase the bonus
+    activate(game) {
+        if (game.num >= this.cost) {
+            game.num -= this.cost;  // Deduct cost from total cookies
+            this.count++;  // Increase upgrade count
+            this.cost = Math.floor(this.cost * this.costIncreaseFactor);  // Increase cost
+
+            // Add the bonus from this upgrade to the total click bonus
+            game.clickBonus += this.bonus;
+
+            // Update the UI
+            game.updateUI();
+            document.getElementById(this.displayCountId).innerHTML = this.count;
+            document.getElementById(this.buttonId).innerHTML = `${this.name} Upgrade (${this.cost} Cookies)`;
+        }
+    }
+}
+
+// Initialize the game
+const game = new BakeryGame();
+
+// Set up all upgrades
+const grannyUpgrade = new Upgrade('Granny', 30, 3, 1.2, 'grannyUpgrade', 'grannyCount');
+const factoryUpgrade = new Upgrade('Factory', 100, 10, 1.3, 'factoryUpgrade', 'factoryCount');
+const farmUpgrade = new Upgrade('Farm', 200, 30, 1.4, 'farmUpgrade', 'farmCount');
+const robotUpgrade = new Upgrade('Robot', 500, 100, 1.5, 'robotUpgrade', 'robotCount');
+const cosmischeUpgrade = new Upgrade('Cosmische', 1000, 200, 1.6, 'cosmischeUpgrade', 'cosmischeCount');
+
+// Add upgrades to the game
+game.addUpgrade(grannyUpgrade);
+game.addUpgrade(factoryUpgrade);
+game.addUpgrade(farmUpgrade);
+game.addUpgrade(robotUpgrade);
+game.addUpgrade(cosmischeUpgrade);
+
+// Function for setting bakery name on load
 window.onload = function () {
-    var name = prompt("What is your name?");
-    var space = document.getElementById("space");
-    space.innerHTML = name + "'s Bakery";
+    const name = prompt("What is your name?");
+    document.getElementById("space").innerHTML = `${name}'s Bakery`;
 };
 
-function cookieClick() {
-    num += 1 + clickBonus;  // Add base 1 cookie plus any bonuses from upgrades
-    document.getElementById("numbers").innerHTML = num;
+// Attach upgrade activation to buttons
+document.getElementById("grannyUpgrade").onclick = function () {
+    grannyUpgrade.activate(game);
+};
 
-    // Enable buttons based on current cookie count
-    if (num >= grannyCost) {
-        document.getElementById("grannyUpgrade").disabled = false;
-    } else {
-        document.getElementById("grannyUpgrade").disabled = true;
-    }
+document.getElementById("factoryUpgrade").onclick = function () {
+    factoryUpgrade.activate(game);
+};
 
-    if (num >= factoryCost) {
-        document.getElementById("factoryUpgrade").disabled = false;
-    } else {
-        document.getElementById("factoryUpgrade").disabled = true;
-    }
+document.getElementById("farmUpgrade").onclick = function () {
+    farmUpgrade.activate(game);
+};
 
-    if (num >= farmCost) {
-        document.getElementById("farmUpgrade").disabled = false;
-    } else {
-        document.getElementById("farmUpgrade").disabled = true;
-    }
+document.getElementById("robotUpgrade").onclick = function () {
+    robotUpgrade.activate(game);
+};
 
-    if (num >= robotCost) {
-        document.getElementById("robotUpgrade").disabled = false;
-    } else {
-        document.getElementById("robotUpgrade").disabled = true;
-    }
+document.getElementById("cosmischeUpgrade").onclick = function () {
+    cosmischeUpgrade.activate(game);
+};
 
-    if (num >= cosmischeCost) {
-        document.getElementById("cosmischeUpgrade").disabled = false;
-    } else {
-        document.getElementById("cosmischeUpgrade").disabled = true;
-    }
-}
-
-// Granny Upgrade
-function activateGrannyUpgrade() {
-    if (num >= grannyCost) {
-        num -= grannyCost;  // Subtract the cost of the upgrade
-        grannyCount++;
-        grannyCost = Math.floor(grannyCost * 1.2);  // Increase the cost by 20%
-
-        // Update the total click bonus with Granny's bonus
-        clickBonus += grannyBonus;
-
-        // Update cookie count and upgrade level
-        document.getElementById("numbers").innerHTML = num;
-        document.getElementById("grannyCount").innerHTML = grannyCount;
-        document.getElementById("upgradeLevel").innerHTML = "Granny Level x" + grannyCount;
-        document.getElementById("grannyUpgrade").innerHTML = "Granny Upgrade (" + grannyCost + " Cookies)";
-    }
-}
-
-// Factory Upgrade
-function activateFactoryUpgrade() {
-    if (num >= factoryCost) {
-        num -= factoryCost;  // Subtract the cost of the upgrade
-        factoryCount++;
-        factoryCost = Math.floor(factoryCost * 1.3);  // Increase the cost by 30%
-
-        // Update the total click bonus with Factory's bonus
-        clickBonus += factoryBonus;
-
-        // Update cookie count and upgrade level
-        document.getElementById("numbers").innerHTML = num;
-        document.getElementById("factoryCount").innerHTML = factoryCount;
-        document.getElementById("upgradeLevel").innerHTML = "Factory Level x" + factoryCount;
-        document.getElementById("factoryUpgrade").innerHTML = "Factory Upgrade (" + factoryCost + " Cookies)";
-    }
-}
-
-// Farm Upgrade
-function activateFarmUpgrade() {
-    if (num >= farmCost) {
-        num -= farmCost;  // Subtract the cost of the upgrade
-        farmCount++;
-        farmCost = Math.floor(farmCost * 1.4);  // Increase the cost by 40%
-
-        // Update the total click bonus with Farm's bonus
-        clickBonus += farmBonus;
-
-        // Update cookie count and upgrade level
-        document.getElementById("numbers").innerHTML = num;
-        document.getElementById("farmCount").innerHTML = farmCount;
-        document.getElementById("upgradeLevel").innerHTML = "Farm Level x" + farmCount;
-        document.getElementById("farmUpgrade").innerHTML = "Farm Upgrade (" + farmCost + " Cookies)";
-    }
-}
-
-// Robot Upgrade
-function activateRobotUpgrade() {
-    if (num >= robotCost) {
-        num -= robotCost;  // Subtract the cost of the upgrade
-        robotCount++;
-        robotCost = Math.floor(robotCost * 1.5);  // Increase the cost by 50%
-
-        // Update the total click bonus with Robot's bonus
-        clickBonus += robotBonus;
-
-        // Update cookie count and upgrade level
-        document.getElementById("numbers").innerHTML = num;
-        document.getElementById("robotCount").innerHTML = robotCount;
-        document.getElementById("upgradeLevel").innerHTML = "Robot Level x" + robotCount;
-        document.getElementById("robotUpgrade").innerHTML = "Robot Upgrade (" + robotCost + " Cookies)";
-    }
-}
-
-// Cosmische Upgrade
-function activateCosmischeUpgrade() {
-    if (num >= cosmischeCost) {
-        num -= cosmischeCost;  // Subtract the cost of the upgrade
-        cosmischeCount++;
-        cosmischeCost = Math.floor(cosmischeCost * 1.6);  // Increase the cost by 60%
-
-        // Update the total click bonus with Robot's bonus
-        clickBonus += cosmischeBonus;
-
-        // Update cookie count and upgrade level
-        document.getElementById("numbers").innerHTML = num;
-        document.getElementById("cosmischeCount").innerHTML = cosmischeCount;
-        document.getElementById("upgradeLevel").innerHTML = "cosmische Level x" + cosmischeCount;
-        document.getElementById("cosmischeUpgrade").innerHTML = "cosmische Upgrade (" + cosmischeCost + " Cookies)";
-    }
-}
-
+// Attach cookie click to main cookie button
+document.getElementById("cookie").onclick = function () {
+    game.cookieClick();
+};

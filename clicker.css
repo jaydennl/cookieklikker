@@ -7,6 +7,7 @@ body {
     margin: auto;
     padding-top: 100px; /* Moved content lower */
     text-align: center;
+    user-select: none;
 }
 
 p {
