@@ -6,7 +6,7 @@ class BakeryGame {
         this.upgrades = {};  // Store for all upgrade instances
     }
 
-    // Method to handle cookie clicks
+    // Method to handle cookies clicks
     cookieClick() {
         this.num += 1 + this.clickBonus;  // Add base 1 cookie + bonuses
         this.updateUI();

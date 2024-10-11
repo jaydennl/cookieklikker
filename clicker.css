@@ -20,7 +20,7 @@ p {
 .container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Aligns content at the top */
+    align-items: flex-start; /* Aligns cosdntent at the top */
 }
 
 /* Modes Sectie (Left Side with Table) */
