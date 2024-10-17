@@ -66,6 +66,14 @@ td {
     height: 250px;
     margin-bottom: 50px; /* ruimte tussen scookie en counter */
 }
+#cookie img:hover{
+    transform: scale(1.05);
+    transition: transform 0,1s ease;
+}
+#cookie img:active{
+transform: scale(0.9);
+transition: transform 0.1s ease;
+}
 
 #space {
     font-size: 30px;
