@@ -4,6 +4,11 @@ class BakeryGame {
         this.num = 0;  // Total number of cookies
         this.clickBonus = 0;  // Total bonus from upgrades
         this.upgrades = {};  // Store for all upgrade instances
+        // Function to generate cookies automatically every second based on total CPS
+function generateAutoCookies() {
+    num += totalCPS;
+    updateCookieDisplay();
+}nfh
     }
 
     // Method to handle cookies clicks
@@ -110,8 +115,8 @@ document.getElementById("cosmischeUpgrade").onclick = function () {
 // Attach cookie click to main cookie button
 document.getElementById("cookie").onclick = function () {
     game.cookieClick();
-};
-// Global cookie counter and CPS variable
+}
+    // Global cookie counter and CPS variable
 var num = 0;
 var totalCPS = 0;
 
@@ -146,11 +151,6 @@ function cookieClick() {
     }
 }
 
-// Function to generate cookies automatically every second based on total CPS
-function generateAutoCookies() {
-    num += totalCPS;
-    updateCookieDisplay();
-}
 
 // Function to handle purchasing auto-clickers
 function buyAutoClicker(clickerNumber) {
