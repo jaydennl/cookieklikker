@@ -111,3 +111,61 @@ document.getElementById("cosmischeUpgrade").onclick = function () {
 document.getElementById("cookie").onclick = function () {
     game.cookieClick();
 };
+// Global cookie counter and CPS variable
+var num = 0;
+var totalCPS = 0;
+
+// Auto-clicker configurations
+var autoClickerCounts = [0, 0, 0, 0, 0, 0, 0, 0];
+var autoClickerCosts = [100, 500, 1000, 2000, 5000, 10000, 20000, 50000];
+var autoClickerCPS = [1, 5, 10, 20, 50, 100, 200, 500]; // CPS for each auto-clicker
+
+window.onload = function () {
+    // Set initial values and start auto-cookie generation
+    var name = prompt("What is your name?");
+    document.getElementById("space").innerHTML = name + "'s Bakery";
+    updateCookieDisplay();
+
+    // Start generating cookies per second
+    setInterval(generateAutoCookies, 1000);
+};
+
+// Function to update the displayed cookie count
+function updateCookieDisplay() {
+    document.getElementById("numbers").innerHTML = num;
+}
+
+// Function triggered by manual clicks on the cookie
+function cookieClick() {
+    num += 1; // Adds one cookie per manual click
+    updateCookieDisplay();
+
+    // Update the availability of each auto-clicker button
+    for (let i = 0; i < 8; i++) {
+        document.getElementById("autoClicker" + (i + 1)).disabled = num < autoClickerCosts[i];
+    }
+}
+
+// Function to generate cookies automatically every second based on total CPS
+function generateAutoCookies() {
+    num += totalCPS;
+    updateCookieDisplay();
+}
+
+// Function to handle purchasing auto-clickers
+function buyAutoClicker(clickerNumber) {
+    var index = clickerNumber - 1;
+
+    // Check if enough cookies are available for the purchase
+    if (num >= autoClickerCosts[index]) {
+        num -= autoClickerCosts[index];  // Subtract the cost
+        autoClickerCounts[index]++;  // Increase count of this auto-clicker
+        totalCPS += autoClickerCPS[index];  // Increase total CPS
+        autoClickerCosts[index] = Math.floor(autoClickerCosts[index] * 1.5);  // Increase cost by 50%
+
+        // Update display for cookies, auto-clicker count, and cost
+        updateCookieDisplay();
+        document.getElementById("autoClicker" + clickerNumber + "Count").innerHTML = autoClickerCounts[index];
+        document.getElementById("autoClicker" + clickerNumber).innerHTML = "Auto Clicker " + clickerNumber + " (" + autoClickerCosts[index] + " Cookies)";
+    }
+}
