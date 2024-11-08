@@ -9,47 +9,131 @@
 </head>
 <body>
     <div class="container">
+        <!-- Upgrades sectie -->
         <div id="upgrades">
             <table>
                 <tr>
-                    <td>30 Cookies</td>
+                    <th>Upgrade</th>
+                    <th>Count</th>
+                </tr>
+                <tr>
+                    <td>30 Cookies - Granny Upgrade</td>
                     <td>
                         <button id="grannyUpgrade" disabled>Granny Upgrade</button>
                         <span id="grannyCount">0</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>100 Cookies</td>
+                    <td>100 Cookies - Factory Upgrade</td>
                     <td>
                         <button id="factoryUpgrade" disabled>Factory Upgrade</button>
                         <span id="factoryCount">0</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>200 Cookies</td>
+                    <td>200 Cookies - Farm Upgrade</td>
                     <td>
                         <button id="farmUpgrade" disabled>Farm Upgrade</button>
                         <span id="farmCount">0</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>500 Cookies</td>
+                    <td>500 Cookies - Robot Upgrade</td>
                     <td>
                         <button id="robotUpgrade" disabled>Robot Upgrade</button>
                         <span id="robotCount">0</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>1000 Cookies</td>
+                    <td>1000 Cookies - Cosmische Upgrade</td>
                     <td>
                         <button id="cosmischeUpgrade" disabled>Cosmische Upgrade</button>
                         <span id="cosmischeCount">0</span>
                     </td>
                 </tr>
             </table>
-            <div id="upgradeLevel">Modes</div>
+            <div id="modus">Modus</div>
         </div>
 
+        <!-- AutoClickers sectie -->
+        <div id="autoClickers">
+            <div class="autoClickerRow">
+                <table>
+                    <tr>
+                        <th>Auto Clicker</th>
+                        <th>Count</th>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 1 - 100 Cookies</td>
+                        <td>
+                            <button id="autoClicker1" onclick="buyAutoClicker(1)">Auto Clicker 1</button>
+                            <span id="autoClicker1Count">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 2 - 500 Cookies</td>
+                        <td>
+                            <button id="autoClicker2" onclick="buyAutoClicker(2)">Auto Clicker 2</button>
+                            <span id="autoClicker2Count">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 3 - 1000 Cookies</td>
+                        <td>
+                            <button id="autoClicker3" onclick="buyAutoClicker(3)">Auto Clicker 3</button>
+                            <span id="autoClicker3Count">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 4 - 2000 Cookies</td>
+                        <td>
+                            <button id="autoClicker4" onclick="buyAutoClicker(4)">Auto Clicker 4</button>
+                            <span id="autoClicker4Count">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 5 - 5000 Cookies</td>
+                        <td>
+                            <button id="autoClicker5" onclick="buyAutoClicker(5)">Auto Clicker 5</button>
+                            <span id="autoClicker5Count">0</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- AutoClickers 6-8 Horizontaal uitlijnen -->
+            <div class="autoClickerRow lastRow">
+                <table>
+                    <tr>
+                        <th>Auto Clicker</th>
+                        <th>Count</th>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 6 - 10000 Cookies</td>
+                        <td>
+                            <button id="autoClicker6" onclick="buyAutoClicker(6)">Auto Clicker 6</button>
+                            <span id="autoClicker6Count">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 7 - 20000 Cookies</td>
+                        <td>
+                            <button id="autoClicker7" onclick="buyAutoClicker(7)">Auto Clicker 7</button>
+                            <span id="autoClicker7Count">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Auto Clicker 8 - 50000 Cookies</td>
+                        <td>
+                            <button id="autoClicker8" onclick="buyAutoClicker(8)">Auto Clicker 8</button>
+                            <span id="autoClicker8Count">0</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Bakery sectie -->
         <div id="bakery-section">
             <div id="space">Your Bakery</div>
             <div id="cookie">
@@ -58,64 +142,5 @@
             <div id="numbers">0</div>
         </div>
     </div>
-    <table>
-        <!-- Auto Clicker Upgrades -->
-        <tr>
-            <td>Auto Clicker 1 - 100 Cookies</td>
-            <td>
-                <button id="autoClicker1" onclick="buyAutoClicker(1)">Auto Clicker 1</button>
-                <span id="autoClicker1Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 2 - 500 Cookies</td>
-            <td>
-                <button id="autoClicker2" onclick="buyAutoClicker(2)">Auto Clicker 2</button>
-                <span id="autoClicker2Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 3 - 1000 Cookies</td>
-            <td>
-                <button id="autoClicker3" onclick="buyAutoClicker(3)">Auto Clicker 3</button>
-                <span id="autoClicker3Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 4 - 2000 Cookies</td>
-            <td>
-                <button id="autoClicker4" onclick="buyAutoClicker(4)">Auto Clicker 4</button>
-                <span id="autoClicker4Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 5 - 5000 Cookies</td>
-            <td>
-                <button id="autoClicker5" onclick="buyAutoClicker(5)">Auto Clicker 5</button>
-                <span id="autoClicker5Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 6 - 10000 Cookies</td>
-            <td>
-                <button id="autoClicker6" onclick="buyAutoClicker(6)">Auto Clicker 6</button>
-                <span id="autoClicker6Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 7 - 20000 Cookies</td>
-            <td>
-                <button id="autoClicker7" onclick="buyAutoClicker(7)">Auto Clicker 7</button>
-                <span id="autoClicker7Count">0</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Auto Clicker 8 - 50000 Cookies</td>
-            <td>
-                <button id="autoClicker8" onclick="buyAutoClicker(8)">Auto Clicker 8</button>
-                <span id="autoClicker8Count">0</span>
-            </td>
-        </tr>
-    </table>
 </body>
 </html>
